@@ -126,7 +126,7 @@ takahom下载的视频文件，保存在 {work_dir}/sdownload目录中。
 - 短视频的url也是同样操作
 
 
-    # 在 ytb_202402_0720.url.txt 文件中添加
+    #在 ytb_202402_0720.url.txt 文件中添加
     https://www.youtube.com/watch?v=at71iHV8QAQ
 
 
@@ -148,8 +148,8 @@ https://www.youtube.com/watch?v=XlnmN4BfCxw&list=PLC0nd42SBTaMpVAAHCAifm5gN2zLk2
 - 在下载播放列表中视频的时候，最多允许下载的视频数量，软件内用参数进行了限制。这样设计，是为了避免播放列表过长，造成下载时间太漫长而难以结束。缺省情况的上限设置是100个视频。有些播放列表的视频数可能超过这个数量，此时如果仍然需要完全下载该列表，可以通过在url尾部附加参数 '\_maxitems_=200' 这样的方式，将该列表中的下载上限数量修改为200个视频。该参数的具体数值可以根据需要设置。
 
 
-    # 在 ytb_202402_0480.url.txt 文件中添加
 
+    #在 ytb_202402_0480.url.txt 文件中添加
     #播放列表的url必须包括list参数和v参数（下同，不再重复）    
     #播放列表的url下载时，缺省限制为最多下载100个视频
     https://www.youtube.com/watch?v=XlnmN4BfCxw&list=PLC0nd42SBTaMpVAAHCAifm5gN2zLk2MBo
