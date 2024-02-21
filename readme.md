@@ -1,6 +1,6 @@
 
 
-### takahom 油管视频下载工具
+### takahom 油管视频下载工具 youtube video downloader
 
 takahom，是简易版的油管视频下载管理工具，其实际的加载过程是调用强大的 yt-dlp 开源项目等完成的。通过编辑对应的文本文件，可以随时增加或者修改需要下载的视频链接. 
 
