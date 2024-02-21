@@ -218,7 +218,7 @@ def f_try_to_add_ytb_scan_dir(self: IServerBaseC) -> None:
 
     self.last_new_urls = len(reqs)
 
-    nps = self.req_size_max - len(self.req_queue_list)
+    nps = min(self.req_size_max - len(self.req_queue_list), len(reqs))
     if nps <= 0:
         iprint_debug("queue is not empty. wait awhile.")
         return
