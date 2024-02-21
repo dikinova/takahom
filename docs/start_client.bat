@@ -1,0 +1,1 @@
+cmd /k py -3.10 client.py

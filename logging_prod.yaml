@@ -1,0 +1,51 @@
+version: 1
+disable_existing_loggers: false
+
+formatters:
+  simple:
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+handlers:
+  console:
+    class: logging.StreamHandler
+    formatter: simple
+    level: INFO
+    stream: ext://sys.stdout
+  debugfile:
+    class: logging.handlers.RotatingFileHandler
+    level: DEBUG
+    formatter: simple
+    filename: logs/driver_debug.log
+    maxBytes: 100000000
+    backupCount: 3
+  infofile:
+    class: logging.handlers.RotatingFileHandler
+    level: INFO
+    formatter: simple
+    filename: logs/driver_info.log
+    maxBytes: 10000000
+    backupCount: 3
+  warnfile:
+    class: logging.handlers.RotatingFileHandler
+    level: WARNING
+    formatter: simple
+    filename: logs/driver_warn.log
+    maxBytes: 10000000
+    backupCount: 3
+  errfile:
+    class: logging.handlers.RotatingFileHandler
+    level: ERROR
+    formatter: simple
+    filename: logs/driver_err.log
+    maxBytes: 10000000
+    backupCount: 3
+loggers:
+  simpleExample:
+    level: DEBUG
+    handlers: [ console ]
+    propagate: no
+root:
+  level: DEBUG
+  handlers: [ console,debugfile,infofile,warnfile,errfile ]
+
+
+  

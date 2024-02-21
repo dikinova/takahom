@@ -1,0 +1,21 @@
+sortedcontainers
+dataclasses-json
+pydantic
+pyrate-limiter==3.1.0
+PyYAML
+types-PyYAML
+logdecorator
+attrs
+cattrs
+python-dotenv
+schedule
+mypy
+ipython
+pytest
+twine
+zhconv
+flask==3.0.0
+numpy==1.26.2
+dknovautils==0.2.6
+
+# -i https://pypi.tuna.tsinghua.edu.cn/simple

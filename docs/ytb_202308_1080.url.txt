@@ -1,0 +1,17 @@
+
+
+# 10分钟2160p大概是600MB 超过1080p分辨率的视频超过10分钟就会比较大
+# 1080p的文件大小可能是720p的3倍 所以这个分辨率要慎重 10分钟1080p大概是300MB
+# 720p文件大小一般是480p大小 增加 50%
+# 480p文件大小一般是360p大小 增加 50%
+
+https://www.youtube.com/watch?v=edvXDJBjMn8
+
+https://www.youtube.com/watch?v=NpdNDTncxwA
+
+
+
+
+
+
+

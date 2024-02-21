@@ -1,0 +1,9 @@
+# ytb_0720.urls.txt文件名称 设置了下载视频的分辨率为 720p
+#  【Loop古筝】加州旅馆 - 用国乐重新打开老鹰乐队经典曲
+https://www.youtube.com/watch?v=gf6v59c5yuY
+# a python tutorial
+https://www.youtube.com/watch?v=ph2HjBQuI8Y
+#  【MV】刀郎 Dao Lang 《花妖 Hua Yao》MV 演唱版
+https://www.youtube.com/watch?v=5u5KQ7wAxpA
+
+https://www.youtube.com/watch?v=at71iHV8QAQ

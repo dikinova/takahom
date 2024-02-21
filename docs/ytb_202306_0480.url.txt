@@ -1,0 +1,17 @@
+
+; 这行是注释
+# 这是注释 ytb_0480.urls.txt文件名称 设置了下载资源的分辨率为480p
+#  【MV】刀郎 Dao Lang 【罗刹海市 Luocha Kingdom 】【山歌寥哉 There are few folk songs】2023
+https://www.youtube.com/watch?v=Ch6Ae9DT6Ko
+
+# 这是一个 playlist 播放列表 _maxitems_=3 用来设置该列表中最多下载3个视频
+https://www.youtube.com/watch?v=XlnmN4BfCxw&list=PLC0nd42SBTaMpVAAHCAifm5gN2zLk2MBo&_maxitems_=3
+
+
+
+
+
+
+
+
+
