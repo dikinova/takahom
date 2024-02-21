@@ -63,7 +63,7 @@ takahom 名称的意思是 take-all-home 。开发这个软件的目的，是方
 #### 从网站下载项目和安装 takahom
 
     #直接下载项目源码
-    git clone https://xxxx/takahom.git
+    git clone https://github.com/dikinova/takahom
 
     #然后使用pip安装python依赖库
     cd ./takahom
@@ -126,9 +126,11 @@ takahom下载的视频文件，保存在 {work_dir}/sdownload目录中。
 - 短视频的url也是同样操作
 
 
+    ```
     #在 ytb_202402_0720.url.txt 文件中添加
     https://www.youtube.com/watch?v=at71iHV8QAQ
 
+    ```
 
 
 
@@ -148,7 +150,7 @@ https://www.youtube.com/watch?v=XlnmN4BfCxw&list=PLC0nd42SBTaMpVAAHCAifm5gN2zLk2
 - 在下载播放列表中视频的时候，最多允许下载的视频数量，软件内用参数进行了限制。这样设计，是为了避免播放列表过长，造成下载时间太漫长而难以结束。缺省情况的上限设置是100个视频。有些播放列表的视频数可能超过这个数量，此时如果仍然需要完全下载该列表，可以通过在url尾部附加参数 '\_maxitems_=200' 这样的方式，将该列表中的下载上限数量修改为200个视频。该参数的具体数值可以根据需要设置。
 
 
-
+    ```
     #在 ytb_202402_0480.url.txt 文件中添加
     #播放列表的url必须包括list参数和v参数（下同，不再重复）    
     #播放列表的url下载时，缺省限制为最多下载100个视频
@@ -156,8 +158,8 @@ https://www.youtube.com/watch?v=XlnmN4BfCxw&list=PLC0nd42SBTaMpVAAHCAifm5gN2zLk2
 
     #因为url附加了 _maxitems_=200 的参数 所以该列表最多可下载200个视频
     https://www.youtube.com/watch?v=XlnmN4BfCxw&list=PLC0nd42SBTaMpVAAHCAifm5gN2zLk2MBo&_maxitems_=200
-    
-
+        
+    ```
 
 
 #### 如何防止重复下载
@@ -176,25 +178,31 @@ takahom下载的视频存储在 {work_dir}/sdownload目录下。 存储在该目
 -   在排除文件中，写入视频或者播放列表对应的url
 
 
+    ```
     #比如视频的url
     https://www.youtube.com/watch?v=Ch6Ae9DT6Ko
     
     #比如播放列表的url
     https://www.youtube.com/watch?v=XlnmN4BfCxw&list=PLC0nd42SBTaMpVAAHCAifm5gN2zLk2MBo
 
+    ```
+
+
 -   在排除文件中，写入视频或者播放列表的编号
 
-
+    ```
     #比如 视频编号
     Ch6Ae9DT6Ko
 
     #比如 播放列表的编号
     PLC0nd42SBTaMpVAAHCAifm5gN2zLk2MBo
 
+    ```
+
 
 -   在排除文件中，写入目录或者文件名称。从takahom已经下载的数据目录中获取目录和文件名称列表的内容，写入到排除文件即可
 
-
+    ```
     #假设用户保存下载数据的目录是 /work/dir/backup
     cd /work/dir/backup
     find . > tmp.txt
@@ -203,13 +211,17 @@ takahom下载的视频存储在 {work_dir}/sdownload目录下。 存储在该目
     #然后将tmp.txt文件内容拷贝到排除文件中即可
     #cp tmp.txt /work/dir/sinput/ytb_202312.exd.txt 
 
+    ```
+
 
 
 -   在env.conf文件中配置 scan_dirs 参数。 如此，将自动的扫描和识别对应目录下已经下载的视频资源，防止重复下载。当然，需要目录和文件的名称保持来自takahom下载和生成的名称，否则是无法从名称中正确提取视频编号的。
 
-
+    ```
     #  scan_dirs 可以配置多个目录
     scan_dirs=/a/b/c/ytb_backup_1,/a/b/c/ytb_backup_2
+
+    ```
 
 
 
@@ -218,11 +230,14 @@ takahom下载的视频存储在 {work_dir}/sdownload目录下。 存储在该目
 
 在 env.conf 文件中配置 rate_limits 参数
 
-    # 配置网速上限 单位 bytes/s
-    # 可以用,符号分割成多个区段，每个区段:符号左边是时间段，右边是网速限值。 左边的区段优先级更高
-    # 下面的配置，表示0-8点和22,23点的网速上限为5MB/s 其他所有时间段为300KB/s 
-    # 数字中的下划线是方便阅读，可以省略
-    rate_limits=0-8:5000_000,22-23:5000_000,*:300_000
+```
+# 配置网速上限 单位 bytes/s
+# 可以用,符号分割成多个区段，每个区段:符号左边是时间段，右边是网速限值。 左边的区段优先级更高
+# 下面的配置，表示0-8点和22,23点的网速上限为5MB/s 其他所有时间段为300KB/s 
+# 数字中的下划线是方便阅读，可以省略
+rate_limits=0-8:5000_000,22-23:5000_000,*:300_000
+
+```
 
 #### 如何自动进行文件名称的简体繁体的转换
 
@@ -232,9 +247,12 @@ takahom下载的视频存储在 {work_dir}/sdownload目录下。 存储在该目
 一个简单的解决办法，就是自动在保存文件的时候将文件名称中的中文进行简体或繁体的转换。在配置文件中进行配置即可。
 
 
-    #设置是否自动进行文件名的中文简繁体转换。 0=不转换 1=转换为zh-cn 2=转换为zh-tw 3=转换为zh-hk
-    chinese_cvt=1
+```
 
+#设置是否自动进行文件名的中文简繁体转换。 0=不转换 1=转换为zh-cn 2=转换为zh-tw 3=转换为zh-hk
+chinese_cvt=1
+
+```
 
 ### 问题与缺陷
 
