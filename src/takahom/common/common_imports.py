@@ -1,4 +1,4 @@
-AppVer = '0.7.1'
+AppVer = '0.6.0'
 
 try:
     # 防止IDE自动删除 或者整理 import内容
