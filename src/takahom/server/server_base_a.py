@@ -267,7 +267,7 @@ def f_url_in_special_100(url: str) -> bool:
     )
 
 
-def dec_my_log_error_builder(message: str) -> Any:
+def dec_my_log_error_builder(message: str, reraise: bool = False) -> Any:
     # 虽然已经全部函数参数都赋值 但类型仍然是 dec_builder 所以必须eval之后才能返回
     dec_log_on_err_builder = functools.partial(
         log_on_error,
@@ -275,7 +275,7 @@ def dec_my_log_error_builder(message: str) -> Any:
         message=message,
         logger=AT.logger,
         on_exceptions=(IOError, Exception),
-        reraise=True,
+        reraise=reraise,
     )
     return dec_log_on_err_builder()
 

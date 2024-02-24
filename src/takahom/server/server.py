@@ -119,7 +119,7 @@ class DownloadServer(IServerBaseC, INetCalulator):
             AT.assert_(dsok, f'err98240 some directory is bad. {self.scan_dirs}')
 
     @dec_my_log_error_builder(message="Error on thread_scan_input_req_scan_dir: {e!r}")  # type:ignore
-    def thread_scan_input_req_scan_dir(self) -> None:
+    def tgt_scan_input_req_scan_dir(self) -> None:
         """
         """
         if self.is_mode_run:
@@ -211,27 +211,29 @@ class DownloadServer(IServerBaseC, INetCalulator):
                                   )
         thread.start()
 
-        schedule.every(10).minutes.do(lambda: self.thread_scan_input_req_scan_dir())
+        if True:
 
-        mins = 60 if AT2.is_profile_prod() else 3
-        schedule.every(mins).minutes.do(lambda: tgt_remove_toomuch_data(self))
+            schedule.every(10).minutes.do(lambda: self.tgt_scan_input_req_scan_dir())
 
-        mins = 60 if AT2.is_profile_prod() else 3
-        schedule.every(mins).minutes.do(lambda: tgt_email_log(self))
+            mins = 60 if AT2.is_profile_prod() else 3
+            schedule.every(mins).minutes.do(lambda: tgt_remove_toomuch_data(self))
 
-        mins = 5 if AT2.is_profile_prod() else 1
-        schedule.every(mins).minutes.do(lambda: tgt_job_log_5mins(self))
+            mins = 60 if AT2.is_profile_prod() else 3
+            schedule.every(mins).minutes.do(lambda: tgt_email_log(self))
 
-        dir_scache = self.subdir('scache')
-        schedule.every(60).seconds.do(lambda: self.tgt_update_sdownload_size(dkf=dir_scache))
+            mins = 5 if AT2.is_profile_prod() else 1
+            schedule.every(mins).minutes.do(lambda: tgt_job_log_5mins(self))
 
-        def th_run_schedule() -> None:
-            while True:
-                schedule.run_pending()
-                time.sleep(1)
+            dir_scache = self.subdir('scache')
+            schedule.every(60).seconds.do(lambda: self.tgt_update_sdownload_size(dkf=dir_scache))
 
-        thread = threading.Thread(target=th_run_schedule, args=(), daemon=True)
-        thread.start()
+            def th_run_schedule() -> None:
+                while True:
+                    schedule.run_pending()
+                    time.sleep(1)
+
+            thread = threading.Thread(target=th_run_schedule, args=(), daemon=True)
+            thread.start()
 
         if vStep4OK := True:
             iprint_info(f'start app step4 ok')

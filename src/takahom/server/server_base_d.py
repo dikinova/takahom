@@ -72,14 +72,11 @@ def tgt_main_download_queue(self: IServerBaseC) -> None:
         # else:
 
         try:
-
             iprint_debug(f"main read queue begin")
             self.thread_main_download(cnt=cnt)
             iprint_debug(f"main read queue end")
-
         except Exception as e:
             iprint_error(e)
-            pass
 
         sp = 20 if AT2.is_profile_prod() else 3
         time.sleep(sp)
@@ -218,7 +215,7 @@ def f_try_to_add_ytb_scan_dir(self: IServerBaseC) -> None:
 
     self.last_new_urls = len(reqs)
 
-    nps = min(self.req_size_max - len(self.req_queue_list), len(reqs))
+    nps = self.req_size_max - len(self.req_queue_list)
     if nps <= 0:
         iprint_debug("queue is not empty. wait awhile.")
         return
@@ -227,6 +224,7 @@ def f_try_to_add_ytb_scan_dir(self: IServerBaseC) -> None:
         iprint_debug(f"no new url. exitids:{len(exitids)}")
     else:
         iprint_debug(f"find new urls total:{len(reqs)} exitids:{len(exitids)}")
+        nps = min(nps, len(reqs))
         for i in range(nps):
             req: DownRequest = reqs[i]
             self.put_req(req)
